@@ -31,6 +31,9 @@ RUN set -eux; \
 	tar x -z -f /tmp/caddy.tar.gz -C /usr/bin caddy; \
 	rm -f /tmp/caddy.tar.gz; \
 	chmod +x /usr/bin/caddy; \
+    apk update ; \
+    apk add --no-cache tzdata libcap; \
+    setcap 'cap_net_bind_service=+ep' /usr/bin/caddy; \
 	caddy version
 
 # set up nsswitch.conf for Go's "netgo" implementation
@@ -40,6 +43,7 @@ RUN [ ! -e /etc/nsswitch.conf ] && echo 'hosts: files dns' > /etc/nsswitch.conf
 # See https://caddyserver.com/docs/conventions#file-locations for details
 ENV XDG_CONFIG_HOME /config
 ENV XDG_DATA_HOME /data
+ENV TZ=Asia/Shanghai
 
 VOLUME /config
 VOLUME /data
