@@ -13,7 +13,7 @@ RUN set -eux; \
 	wget -O /usr/share/caddy/index.html "https://github.com/caddyserver/dist/raw/56302336e0bb7c8c5dff34cbcb1d833791478226/welcome/index.html"
 
 # https://github.com/caddyserver/caddy/releases
-ENV CADDY_VERSION v2.2.1
+ENV CADDY_VERSION v2.3.0
 
 RUN set -eux; \
 	apkArch="$(apk --print-arch)"; \
@@ -48,7 +48,7 @@ ENV TZ=Asia/Shanghai
 VOLUME /config
 VOLUME /data
 
-LABEL org.opencontainers.image.version=v2.2.1
+LABEL org.opencontainers.image.version=v2.3.0
 LABEL org.opencontainers.image.title=Caddy
 LABEL org.opencontainers.image.description="a powerful, enterprise-ready, open source web server with automatic HTTPS written in Go"
 LABEL org.opencontainers.image.url=https://caddyserver.com
